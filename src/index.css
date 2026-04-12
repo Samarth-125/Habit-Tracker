@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0e0e10;
+  color: #e6e6f0;
+  font-family: 'DM Mono', monospace;
+}
+
+.light body {
+  background: #f5f5f0;
+  color: #1a1a2e;
+}
+
+/* surfaces */
+.card {
+  background: #15151a;
+  border: 1px solid #272733;
+}
+.light .card {
+  background: #fff;
+  border-color: #e0e0d8;
+}
+
+/* secondary surface */
+.panel {
+  background: #1c1c24;
+}
+.light .panel {
+  background: #f0f0ea;
+}
+
+/* text */
+.muted { color: #9191a8; }
+.light .muted { color: #6b6b80; }
+
+/* accents */
+.accent { color: #c8f55a; }
+.teal   { color: #5af5c8; }
+.pink   { color: #f55a8c; }
+.gold   { color: #f5c85a; }
+
+/* borders */
+.border-dark  { border-color: #272733; }
+.light .border-dark { border-color: #e0e0d8; }
+
+/* fonts */
+.font-serif { font-family: 'DM Serif Display', serif; }
+.font-mono  { font-family: 'DM Mono', monospace; }
+
+/* ── Mobile / Desktop nav visibility ── */
+.mobile-nav      { display: none; }
+.desktop-sidebar { display: flex; }
+
+@media (max-width: 640px) {
+  .mobile-nav      { display: flex; }
+  .desktop-sidebar { display: none; }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #272733; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9191a8; }
+
+/* ── Hide on mobile ── */
+@media (max-width: 640px) {
+  .hide-mobile { display: none; }
+}
+
+/* ── Smooth page fade ── */
+main > * {
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Better checkbox style ── */
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
+/* ── Button hover lift effect ── */
+button {
+  transition: all 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0px);
+}
+
+/* ── Card hover effect ── */
+.habit-card:hover {
+  transform: translateX(2px);
+}
+
+/* ── Smooth color transitions ── */
+* {
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Habit animations ── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(12px); }
+}
+
+.habit-card {
+  animation: slideIn 0.25s ease;
+}
+
+/* ── Animations ── */
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.8) translateY(8px); }
+  70%  { transform: scale(1.04) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* Apply to elements */
+.habit-card {
+  animation: slideInLeft 0.25s ease;
+}
+
+.stat-card-anim {
+  animation: popIn 0.3s cubic-bezier(.34,1.4,.64,1);
+}
+
+.page-fade {
+  animation: slideInUp 0.2s ease;
+}
+
+.quote-anim {
+  animation: slideInLeft 0.4s ease;
+}
+
+.saving-pulse {
+  animation: pulse 1.2s ease infinite;
+}
+
+/* Checkbox pop when checked */
+input[type='checkbox']:checked {
+  animation: popIn 0.2s cubic-bezier(.34,1.4,.64,1);
+}
+
+/* Button press */
+button:active {
+  transform: scale(0.96) !important;
+}
+
+/* Smooth page transitions */
+main > div {
+  animation: slideInUp 0.2s ease;
+}
+
+/* ══════════════════════════════════════════
+   ANIMATIONS v2
+══════════════════════════════════════════ */
+
+/* 1. Checkbox pop */
+@keyframes checkPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.check-pop {
+  animation: checkPop 0.3s cubic-bezier(.34,1.4,.64,1);
+}
+
+/* 2. Streak fire pulse */
+@keyframes firePulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%       { transform: scale(1.12); opacity: 0.85; }
+}
+.fire-pulse {
+  animation: firePulse 1.4s ease infinite;
+}
+
+/* 3. Quote fade in */
+@keyframes quoteFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.quote-anim {
+  animation: quoteFade 0.5s ease;
+}
+
+/* 4. Progress ring fill — handled in JS via strokeDashoffset */
+
+/* 5. Page transition */
+@keyframes pageSlide {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.page-fade {
+  animation: pageSlide 0.25s ease;
+}
+
+/* 6. Habit row highlight */
+@keyframes rowHighlight {
+  0%   { background: rgba(200,245,90,0.0); }
+  30%  { background: rgba(200,245,90,0.15); }
+  100% { background: rgba(200,245,90,0.0); }
+}
+.row-highlight {
+  animation: rowHighlight 0.6s ease;
+}
+
+/* 7. Delete shake */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* 8. Stats counter — handled in JS */
+
+/* 9. Add habit bounce */
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.95); }
+  60%  { transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.bounce-in {
+  animation: bounceIn 0.4s cubic-bezier(.34,1.4,.64,1);
+}
+
+/* 10. All done glow */
+@keyframes doneGlow {
+  0%, 100% { box-shadow: 0 0 0px rgba(200,245,90,0); }
+  50%       { box-shadow: 0 0 30px rgba(200,245,90,0.15); }
+}
+.all-done-glow {
+  animation: doneGlow 2s ease infinite;
+}
+
+/* Override habit-card animation */
+.habit-card {
+  animation: bounceIn 0.35s cubic-bezier(.34,1.4,.64,1);
+}
