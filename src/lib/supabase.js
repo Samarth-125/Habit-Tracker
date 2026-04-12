@@ -1,6 +1,5 @@
-import { createClient } from '@supabase/supabase-js'
-
-const url = import.meta.env.VITE_SUPABASE_URL
-const key = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-export const supabase = createClient(url, key)
+// Supabase disabled for now
+export const supabase = nullcd ~/Desktop/Habit-Tracker
+git add .
+git commit -m "fix: disable supabase until ready"
+git push
