@@ -595,7 +595,7 @@ function CardView({ habits, checks, toggleCheck, addHabit, deleteHabit, updateHa
     if (h.length > 0) acc[g] = h
     return acc
   }, {})
-  const ungrouped = habits.filter(h => !h.group || !groups.includes(h.group) || !Object.keys(grouped).includes(h.group))const ungrouped = habits.filter(h => !h.group || !groups.includes(h.group))
+  const ungrouped = habits.filter(h => !h.group || !groups.includes(h.group) || !Object.keys(grouped).includes(h.group))
 
   return (
     <div style={{ maxWidth:640, margin:'0 auto' }}>
